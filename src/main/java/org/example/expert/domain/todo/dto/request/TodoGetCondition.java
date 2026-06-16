@@ -11,14 +11,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TodoSearchCondition {
-	private String keyword;
+public class TodoGetCondition {
+
+	private String weather;
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate createdAtFrom;
+	private LocalDate modifiedAtFrom;
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate createdAtTo;
-
-	private String managerNickname;
+	private LocalDate modifiedAtTo;
 }
