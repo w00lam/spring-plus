@@ -63,7 +63,7 @@ public class TodoService {
         Page<Todo> todos = todoRepository.searchTodosWithCondition(
             normalizeWeather(condition.getWeather()),
             toStartDateTime(condition.getModifiedAtFrom()),
-            toExclusiveEndDateTime(condition.getModifiedAtFrom()),
+            toExclusiveEndDateTime(condition.getModifiedAtTo()),
             pageable
         );
 
