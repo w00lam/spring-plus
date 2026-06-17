@@ -22,7 +22,7 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	public SecurityFilterChain springSecurityFilterChain(HttpSecurity http, JwtFilter jwtFilter) throws Exception {
+	public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtFilter jwtFilter) throws Exception {
 		return http
 			.csrf(AbstractHttpConfigurer::disable)
 			.sessionManagement(session ->
@@ -32,6 +32,7 @@ public class SecurityConfig {
 			.httpBasic(AbstractHttpConfigurer::disable)
 			.authorizeHttpRequests(auth -> auth
 				.requestMatchers("/auth/signup", "/auth/signin").permitAll()
+				.requestMatchers("/ws", "/ws/**").permitAll()
 				.requestMatchers("/admin/**").hasAuthority("ADMIN")
 				.anyRequest().authenticated()
 			)
