@@ -38,3 +38,4 @@ out/
 
 ### properties ###
 *.properties
+!gradle/wrapper/gradle-wrapper.properties

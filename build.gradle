@@ -60,5 +60,29 @@ dependencies {
 }
 
 tasks.named('test') {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags 'bulk-data', 'search-performance'
+    }
+}
+
+tasks.register('bulkDataTest', Test) {
+    group = 'verification'
+    description = 'Runs the local MySQL bulk data generation test.'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+
+    useJUnitPlatform {
+        includeTags 'bulk-data'
+    }
+}
+
+tasks.register('searchPerformanceTest', Test) {
+    group = 'verification'
+    description = 'Compares nickname search performance before and after indexing.'
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+
+    useJUnitPlatform {
+        includeTags 'search-performance'
+    }
 }
